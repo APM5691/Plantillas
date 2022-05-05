@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the body */
+  body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  /* Header/logo Title */
+  .header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+  }
+  
+  /* Column container */
+  .row {
+    display: flex;      
+    flex-wrap: wrap;
+  }
+  
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+  }
+  
+  /* Main column */
+  .main {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  /* Fake image, just for this example */
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+  }
+
+  /* cambiar a flex */
+  .topnav {
+      display: flex;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    display: flex;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+
+  .column{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+  
+  @media screen and (max-width: 600px) {
+
+    .topnav{
+        justify-content: space-between;
+    }
+
+    .topnav a:not(:first-child) {display: none;}
+
+    .topnav a.icon {
+      display: flex;
+    }
+
+    .topnav.responsive a {
+        text-align: center;
+    }
+
+    .topnav.responsive {
+     display: flex;
+     flex-direction: column;
+    }
+
+    .topnav.responsive .icon {
+      display: flex;
+    }
+
+    .topnav.responsive a {
+      display: flex;
+      flex-direction: column;
+    }
+  }
