@@ -1,0 +1,47 @@
+.centrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 90vh;
+}
+
+.modalDialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+.modalDialog:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modalDialog > div {
+  width: 80%;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+
+  transition: opacity 400ms ease-in;
+}
+.close {
+  color: #000000;
+  line-height: 25px;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  font-size: 30px;
+  top: 11px;
+  width: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.close:hover {
+  font-size: 40px;
+  cursor: pointer;
+}
