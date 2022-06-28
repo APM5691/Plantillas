@@ -61,22 +61,26 @@ class Card {
 let url =
   "http://ddragon.leagueoflegends.com/cdn/12.11.1/data/es_ES/champion.json";
 
-fetch(url)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    var champions = Object.values(data.data);
+async function getData() {
+  let response = await fetch(url);
+  let data = await response.json();
+  return data;
+}
 
-    for (let i = 0; i < champions.length; i++) {
-      let card = new Card(
-        champions[i].key,
-        champions[i].name,
-        champions[i].title,
-        champions[i].image.full,
-        champions[i].blurb
-      );
-      // console.log(card);
-      root.appendChild(card.createCard());
-    }
-  });
+var data = getData();
+
+let champions = data.data;
+
+console.log(champions);
+
+for (let i = 0; i < champions.length; i++) {
+  let card = new Card(
+    champions[i].key,
+    champions[i].name,
+    champions[i].title,
+    champions[i].image.full,
+    champions[i].blurb
+  );
+  // console.log(card);
+  root.appendChild(card.createCard());
+}
