@@ -1,0 +1,50 @@
+/* reset all styles for default */
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.contenedor {
+  min-width: 100%;
+  min-height: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert {
+  position: absolute;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.alert.success {
+  background-color: #04aa6d;
+}
+.alert.info {
+  background-color: #2196f3;
+}
+.alert.warning {
+  background-color: #ff9800;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
