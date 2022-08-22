@@ -1,7 +1,6 @@
 let root = document.getElementById("root");
 
 // Card
-
 class Card {
   constructor(id, name, title, image, info) {
     this.id = id;
@@ -22,6 +21,8 @@ class Card {
     let description = document.createElement("div");
 
     card.setAttribute("id", this.id);
+
+    image.setAttribute("loading", "lazy");
 
     card.classList.add("Card");
     container.classList.add("container");
@@ -55,32 +56,82 @@ class Card {
     return card;
   }
 }
-
 // Final Card
 
 let url =
   "http://ddragon.leagueoflegends.com/cdn/12.11.1/data/es_ES/champion.json";
 
-async function getData() {
+let getData = async () => {
   let response = await fetch(url);
-  let data = await response.json();
-  return data;
-}
+  return await response.json();
+};
 
-var data = getData();
+let createDiv = () => {
+  let div = document.createElement("div");
+  div.classList.add("container");
+  return div;
+};
 
-let champions = data.data;
+let createInput = () => {
+  let input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "Buscar");
+  input.setAttribute("id", "input");
+  input.classList.add("input");
+  return input;
+};
 
-console.log(champions);
+let clean = () => {
+  let cards = document.querySelectorAll(".Card");
+  cards.forEach((card) => {
+    card.remove();
+  });
+};
 
-for (let i = 0; i < champions.length; i++) {
-  let card = new Card(
-    champions[i].key,
-    champions[i].name,
-    champions[i].title,
-    champions[i].image.full,
-    champions[i].blurb
-  );
-  // console.log(card);
-  root.appendChild(card.createCard());
-}
+getData().then((data) => {
+  let champions = Object.values(data.data);
+  // console.log(champions);
+  let div = createDiv();
+
+  let input = createInput();
+
+  div.appendChild(input);
+
+  root.appendChild(div);
+
+  champions.forEach((champion) => {
+    // console.log(champion);
+    let card = new Card(
+      champion.key,
+      champion.name,
+      champion.title,
+      champion.image.full,
+      champion.blurb
+    );
+
+    root.appendChild(card.createCard());
+  });
+
+  input.addEventListener("keyup", () => {
+    console.log(input.value);
+
+    clean();
+
+    let result = champions.filter((champion) => {
+      return champion.name.toLowerCase().includes(input.value.toLowerCase());
+    });
+
+    result.forEach((champion) => {
+      // console.log(champion);
+      let card = new Card(
+        champion.key,
+        champion.name,
+        champion.title,
+        champion.image.full,
+        champion.blurb
+      );
+
+      root.appendChild(card.createCard());
+    });
+  });
+});
