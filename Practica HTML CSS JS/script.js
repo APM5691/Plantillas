@@ -35,7 +35,7 @@ class Card {
 
     image.setAttribute(
       "src",
-      "http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" +
+      "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" +
         this.image
     );
 
