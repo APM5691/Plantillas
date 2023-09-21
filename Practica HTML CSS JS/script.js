@@ -59,7 +59,7 @@ class Card {
 // Final Card
 
 let url =
-  "http://ddragon.leagueoflegends.com/cdn/12.11.1/data/es_ES/champion.json";
+  "https://ddragon.leagueoflegends.com/cdn/12.11.1/data/es_ES/champion.json";
 
 let getData = async () => {
   let response = await fetch(url);
